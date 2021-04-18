@@ -2,11 +2,10 @@ Feature: Articles
 
     Background: Define URL
         Given url 'https://conduit.productionready.io/api/'
-        And path 'users/login'
-        And request {"user": {"email": "test123456789012345@test.com","password": "aRijan1@3"}}
-        When method Post
-        Then status 200
-        * def token = response.user.token
+        * def tokenResponse = callonce read('classpath:helpers/CreateToken.feature') {"email": "test123456789012345@test.com","password": "aRijan1@3"}
+        * def token = tokenResponse.authToken
+
+
     Scenario: Create a new article
         Given header Authorization = 'Token ' + token
         And path 'articles'
@@ -14,7 +13,6 @@ Feature: Articles
         When method Post
         Then status 200
         And match response.article.title == 'DDDDDDDD'
-
     @debug
     Scenario: Create and delete article
         Given header Authorization = 'Token ' + token
