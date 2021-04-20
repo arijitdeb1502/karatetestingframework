@@ -1,7 +1,7 @@
 Feature: Tests for the home Page
 
     Background: Define URL
-        Given url 'https://conduit.productionready.io/api/'
+        Given url apiUrl
 
     Scenario: Get all tags
         Given path 'tags'
