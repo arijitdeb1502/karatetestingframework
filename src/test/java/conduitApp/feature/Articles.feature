@@ -13,7 +13,6 @@ Feature: Articles
         When method Post
         Then status 200
         And match response.article.title == 'DDDDDDDD'
-    @debug
     Scenario: Create and delete article
         # Given header Authorization = 'Token ' + token
         And path 'articles'
