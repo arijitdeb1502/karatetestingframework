@@ -12,7 +12,6 @@ Feature: Tests for the home Page
         And match response.tags == '#array'
         And match each response.tags == '#string'
     
-    @debug
     Scenario: Get 10 articles from the page
         * def timeValidator = read('classpath:helpers/timeValidator.js')
 
