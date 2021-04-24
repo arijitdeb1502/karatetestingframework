@@ -2,6 +2,8 @@ Feature: Sign up new user
 
     Background: Define URL
         * def dataGenerator = Java.type('helpers.DataGenerator');
+        * def timeValidator = read('classpath:helpers/timeValidator.js')
+
         Given url apiUrl
     
     @debug
@@ -23,3 +25,18 @@ Feature: Sign up new user
         """
         When method Post
         Then status 200
+        And match response == 
+        """
+            {
+                "user": {
+                    "id": "#number",
+                    "email": #(randomEmail),
+                    "createdAt": "#? timeValidator(_)",
+                    "updatedAt": "#? timeValidator(_)",
+                    "username": #(randomUserName),
+                    "bio": null,
+                    "image": null,
+                    "token": "#string"
+                }
+            }
+        """
