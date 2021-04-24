@@ -1,15 +1,15 @@
+@debug
 Feature: Sign up new user
 
     Background: Define URL
         * def dataGenerator = Java.type('helpers.DataGenerator');
         * def timeValidator = read('classpath:helpers/timeValidator.js')
-
+        * def randomEmail = dataGenerator.getRandomEmail()
+        * def randomUserName = dataGenerator.getRandomUserName()
         Given url apiUrl
     
     Scenario: New User signup
         # Given def userData = {"email": "k_test174@test.com","username": "k_test174"}
-        * def randomEmail = dataGenerator.getRandomEmail()
-        * def randomUserName = dataGenerator.getRandomUserName()
 
         Given path 'users'
         And request 
@@ -40,12 +40,8 @@ Feature: Sign up new user
             }
         """
 
-    @debug
     Scenario Outline: Validate signup error messages
         # Given def userData = {"email": "k_test174@test.com","username": "k_test174"}
-        * def randomEmail = dataGenerator.getRandomEmail()
-        * def randomUserName = dataGenerator.getRandomUserName()
-
         Given path 'users'
         And request 
         """
