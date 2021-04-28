@@ -1,4 +1,3 @@
-@debug
 Feature: Sign up new user
 
     Background: Define URL
