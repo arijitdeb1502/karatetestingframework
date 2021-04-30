@@ -21,7 +21,7 @@ class ConduitTest {
         Results results = Runner.path("classpath:conduitApp/feature")
                 .tags("~@ignore")
                 .outputCucumberJson(true)
-                .parallel(5);
+                .parallel(1);
         
         generateReport(results.getReportDir());
 
