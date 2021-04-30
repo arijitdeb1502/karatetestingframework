@@ -1,4 +1,4 @@
-@debug
+#@debug
 Feature: Articles
 
     Background: Define URL
