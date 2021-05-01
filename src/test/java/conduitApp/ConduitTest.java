@@ -14,6 +14,9 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 
+// Run karate test  :   mvn clean test -Dkarate.options="--tags @debug" -Dkarate.env="dev"
+// Run Gatling test :   mvn clean test-compile gatling:test
+
 class ConduitTest {
 
     @Test
